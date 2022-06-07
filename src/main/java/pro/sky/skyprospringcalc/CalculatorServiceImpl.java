@@ -44,12 +44,13 @@ public class CalculatorServiceImpl implements CalculatorService {
         try {
         int myNum1 = Integer.parseInt(num1);
         int myNum2 = Integer.parseInt(num2);
-        if (myNum2 == 0) return "На ноль делить нельзя!";
+        if (myNum2 == 0) {
+            throw new IllegalArgumentException();
+        }
         float divideNum = 0f;
         divideNum = (float)myNum1/(float)myNum2;
         return myNum1 + " / " + myNum2 + " = " + divideNum;
-        /*} catch (ArithmeticException e) {
-            return "На ноль делить нельзя!"; не ловит, делит на ноль и возвращает бесконечность (Infinity)*/
+
         } catch (NumberFormatException e) {
             return ("Неверный формат данных!");
         }
